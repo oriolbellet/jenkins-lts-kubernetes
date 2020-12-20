@@ -8,4 +8,6 @@ RUN echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sourc
 RUN apt-get update
 RUN apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 
+RUN chown jenkins: /var/run/docker.sock
+
 USER jenkins
