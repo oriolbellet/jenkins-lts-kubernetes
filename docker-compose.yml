@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+    jenkins:
+        build:
+            context: ./
+        user: root
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /var/lib/docker/volumes/jenkins_home/_data:/var/jenkins_home
+        ports:
+            - "8180:8180"
+            - "50000:50000"
+        environment:
+            JENKINS_OPTS: --httpPort=8180
