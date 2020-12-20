@@ -5,10 +5,10 @@ services:
             context: ./
         user: root
         volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
-            - /var/lib/docker/volumes/jenkins_home/_data:/var/jenkins_home
+            - ${HOST_DOCKER}:/var/run/docker.sock
+            - ${HOST_JENKINS_DATA}:/var/jenkins_home
         ports:
-            - "8180:8180"
-            - "50000:50000"
+            - "${HOST_WWW}:8180"
+            - "${HOST_OTHER}:50000"
         environment:
-            JENKINS_OPTS: --httpPort=8180
+            JENKINS_OPTS: --httpPort=${HOST_WWW}
